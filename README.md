@@ -28,7 +28,7 @@ operators =['fgsm','jsma','bim-a','bim-b','cw-l2']
 
 ## Baseline methods
 
-FATS. Our method is design in the "/FATS/FATS_method.py" and is implemented in the "***_retrain.py" as the function "new_select_from_mmd_Distance_test" and "learning_to_rank_test".
+FATS. Our method is designed in the "/FATS/FATS_method.py" and is implemented in the "***_retrain.py" as the function "new_select_from_mmd_Distance_test" and "learning_to_rank_test".
 
 DeepGini. The method is implemented in the "***_retrain.py" as the function "select_deepgini".
 
@@ -39,4 +39,4 @@ LSA/DSA. You can directly invoke the functions "fetch_lsa" and "fetch_dsa" from 
 SRS. This method is implemented in the "***_retrain.py" as the function "select_rondom".
 
 ## Results 
-We put the results for all experiments in AllResult.
+We put the results for all experiments in "AllResult".

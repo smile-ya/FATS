@@ -4,7 +4,7 @@ We used the framework by [Ma et al.](https://github.com/xingjunm/lid_adversarial
 
 ## Simulated test sets
 Run create_dataset.py to generate the simulated test sets.
-The part of the simulated test sets of mnist and cifar10 is stored in mnist/adv and cifar10/adv.
+The part of the simulated test sets of mnist and cifar10 are stored in mnist/adv and cifar10/adv.
 
-## Trained model
+## Pre-trained models
 Run train_model.py to generate the trained model using mnist, cifar10 and svhn.

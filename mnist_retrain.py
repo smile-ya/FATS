@@ -384,10 +384,10 @@ def datapredict(dataset='mnist', attack='fgsm'):
     return x_train, x_test, y_test, x_valid, y_valid, valid_len
 
 
-def retrain(begin,res, train_act_layers, model, args, layer_names,ranknet_model,x_train, x_test, y_test, selectsize=100,
+def retrain(res, train_act_layers, model, args, layer_names,ranknet_model,x_train, x_test, y_test, selectsize=100,
             attack='fgsm', measure='MCP',flag=1):
 
-    # begin = time.time() #计算每个测试排序方法的时间成本：开始时间
+    begin = time.time() #计算每个测试排序方法的时间成本：开始时间
     target_lst = []
     # baselines =['LSA','DSA','CES','MCP','SRS','AAL','FATS','random-Distance','deepgini']
     if measure == 'FATS':
@@ -496,7 +496,7 @@ if __name__ == "__main__":
         selectsizelist = [100, 300, 500, 800, 1000]
 
     # baselines = ['FATS','MCP','SRS','DeepGini','LSA','DSA']
-    baselines = ['FATS']
+    baselines = ['MCP']
     operators = ['fgsm']
     # operators = ['fgsm', 'jsma','bim-a', 'bim-b', 'cw-l2']
 
@@ -514,7 +514,7 @@ if __name__ == "__main__":
         for measure in baselines:
             if measure == 'FATS' and valid_flag == 0:
                 print("---------排序模型构建---------------")
-                begin = time.time()  # 计算每个测试排序方法的时间成本：开始时间
+                # begin = time.time()  # 计算每个测试排序方法的时间成本：开始时间
                 valid_noise = noise_score_var(model, args.d, x_valid, y_valid)
                 valid_feature, res, train_act_layers = new_select_from_mmd_Distance_valid(model, x_valid, x_train,
                                                                                           valid_flag)
@@ -533,7 +533,7 @@ if __name__ == "__main__":
 
             for selectsize in selectsizelist:
 
-                Time,x_select,y_select,retrain_acc, origin_acc, rank_list = retrain(begin,res, train_act_layers,model, args, layer_names,ranknet_model, x_train, x_test,
+                Time,x_select,y_select,retrain_acc, origin_acc, rank_list = retrain(res, train_act_layers,model, args, layer_names,ranknet_model, x_train, x_test,
                                                              y_test, selectsize, operator, measure,valid_flag)
 
 
@@ -548,4 +548,3 @@ if __name__ == "__main__":
 
                 with open(resultfilename, 'a') as file_object:
                     file_object.write(result_to_write)
-

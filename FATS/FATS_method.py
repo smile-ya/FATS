@@ -45,11 +45,11 @@ def noise_score_var(model, dataset, x_target,y_target):
             if i == j:
                 continue
             if varnoise[i] <  varnoise[j]:
-                varnoise_list.append(1)
+                varnoise_list.append(-1)
             if varnoise[i] == varnoise[j]:
                 varnoise_list.append(0)
             if varnoise[i] > varnoise[j]:
-                varnoise_list.append(-1)
+                varnoise_list.append(1)
     print("############################varnoise_list#########################3")
     # print(len(varnoise_list))
     return varnoise_list
